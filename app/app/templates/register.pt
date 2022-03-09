@@ -1,0 +1,36 @@
+<div metal:use-macro="load: layout.pt">
+    <div metal:fill-slot="content">
+
+
+
+        <div class="content">
+            <form class="register-form" method="POST">
+                <h3>register</h3>
+                <label>
+                    <input name="name" placeholder="name"
+                           type="text" value="${name}" class="form-control">
+                </label>
+                <label>
+                    <input name="email" placeholder="email"
+                           type="text" value="${email}" class="form-control">
+                </label>
+                <label>
+                    <input name="password1" placeholder="password"
+                           type="password" value="${password1}" class="form-control">
+                </label>
+                <label>
+                    <input name="password2" placeholder="confirm password"
+                           type="password" value="${password2}" class="form-control">
+                </label>
+                <br>
+                <button class="btn btn-success" type="submit">register</button>
+                <div class="error-msg" tal:condition="error">
+                        ${error}
+                </div>
+            </form>
+
+
+        </div>
+
+    </div>
+</div>
