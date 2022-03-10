@@ -124,8 +124,8 @@ def create_userdetails(emp_code, phone_no, user, incharge):
 def details_post(request: Request):
     emp_code=request.POST.get("emp_code")
     phone_no=request.POST.get("phone_no")
-    user_id=request.matchdict['id']
-    print(user_id)
+    # user_id=request.matchdict['id']
+    # print(user_id)
     user_incharge_id = request.POST.get("incharge")
     if not emp_code or not phone_no:
         return {
@@ -136,7 +136,7 @@ def details_post(request: Request):
             "error": "some required fields r missing"
         }
 
-    create_userdetails(emp_code,phone_no,user_id,user_incharge_id)
+    create_userdetails(emp_code,phone_no,user_incharge_id)#,user_id)
     return HTTPFound("/login")
 
 ###################login####################
@@ -160,7 +160,7 @@ def login_user(email, password):
 
     user = local_session.query(UserModel).filter(UserModel.email == email).first()
     paw = user.password
-    user_id=user.id
+    # user_id=user.id
     if not user:
         return None
     if not verify_hash(paw, password):
